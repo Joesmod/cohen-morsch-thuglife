@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WHAT WE SLING | Cohen Morsch THUG LIFE 🔥</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Permanent+Marker&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Bebas Neue', sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: #ffd700;
+            min-height: 100vh;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffd700' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(0,0,0,0.9);
+            border-bottom: 3px solid #ffd700;
+        }
+
+        .logo {
+            font-family: 'Permanent Marker', cursive;
+            font-size: 2rem;
+            color: #ffd700;
+            text-decoration: none;
+        }
+
+        .nav-links { display: flex; gap: 30px; }
+        .nav-links a {
+            color: #ffd700;
+            text-decoration: none;
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: all 0.3s;
+        }
+        .nav-links a:hover { color: #fff; text-shadow: 0 0 20px #ffd700; }
+        .nav-links a.active { color: #fff; border-bottom: 2px solid #ffd700; }
+
+        .page-header {
+            padding: 150px 50px 80px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .page-header h1 {
+            font-family: 'Permanent Marker', cursive;
+            font-size: 5rem;
+            color: #ffd700;
+            text-shadow: 5px 5px 0 #000;
+            margin-bottom: 20px;
+        }
+
+        .page-header p {
+            font-size: 1.5rem;
+            color: #fff;
+            letter-spacing: 5px;
+        }
+
+        .content-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 50px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 80px;
+        }
+
+        .stat-card {
+            background: rgba(0,0,0,0.5);
+            border: 3px solid #ffd700;
+            padding: 40px 20px;
+            text-align: center;
+            border-radius: 15px;
+        }
+
+        .stat-number {
+            font-family: 'Permanent Marker', cursive;
+            font-size: 3rem;
+            color: #ffd700;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            color: #fff;
+            letter-spacing: 2px;
+        }
+
+        .property-types {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-bottom: 80px;
+        }
+
+        .property-card {
+            background: linear-gradient(145deg, rgba(26,26,46,0.9), rgba(15,52,96,0.9));
+            border: 4px solid #ffd700;
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .property-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(255,215,0,0.2);
+        }
+
+        .property-card .emoji {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+
+        .property-card h3 {
+            font-family: 'Permanent Marker', cursive;
+            font-size: 1.8rem;
+            color: #ffd700;
+            margin-bottom: 15px;
+        }
+
+        .property-card p {
+            font-size: 1.1rem;
+            color: #fff;
+            letter-spacing: 1px;
+            line-height: 1.6;
+        }
+
+        .feature-section {
+            background: rgba(0,0,0,0.5);
+            padding: 60px;
+            border-radius: 20px;
+            border: 3px solid #ffd700;
+            margin-bottom: 50px;
+        }
+
+        .feature-section h2 {
+            font-family: 'Permanent Marker', cursive;
+            font-size: 2.5rem;
+            color: #ffd700;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .feature-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .feature-list li {
+            font-size: 1.2rem;
+            color: #fff;
+            padding: 15px 20px;
+            background: rgba(255,215,0,0.1);
+            border-radius: 10px;
+            border-left: 4px solid #ffd700;
+        }
+
+        footer {
+            background: #000;
+            padding: 50px;
+            text-align: center;
+            border-top: 5px solid #ffd700;
+        }
+
+        .footer-logo {
+            font-family: 'Permanent Marker', cursive;
+            font-size: 1.5rem;
+            color: #ffd700;
+            margin-bottom: 20px;
+        }
+
+        .copyright {
+            color: #666;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+        }
+
+        @media (max-width: 768px) {
+            .page-header h1 { font-size: 3rem; }
+            nav { padding: 15px 20px; flex-direction: column; gap: 15px; }
+            .nav-links { gap: 15px; flex-wrap: wrap; justify-content: center; }
+            .content-section { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="logo">COHEN MORSCH 🔫</a>
+        <div class="nav-links">
+            <a href="what-we-sling.html" class="active">WHAT WE SLING</a>
+            <a href="what-we-build.html">WHAT WE BUILD</a>
+            <a href="crew.html">THE CREW</a>
+            <a href="pull-up.html">PULL UP</a>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <h1>WHAT WE SLING 🏠</h1>
+        <p>PREMIUM CRIBS FOR REAL ONES. NO CAP.</p>
+    </section>
+
+    <div class="content-section">
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">$57.3M</div>
+                <div class="stat-label">CLOSED LAST YEAR 💰</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">TOP 1%</div>
+                <div class="stat-label">CHICAGO PRODUCTION 📈</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">TOP 10</div>
+                <div class="stat-label">TEAM IN CHICAGO 🏆</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">20+</div>
+                <div class="stat-label">YEARS IN THE GAME ⏰</div>
+            </div>
+        </div>
+
+        <div class="property-types">
+            <div class="property-card">
+                <div class="emoji">🏛️</div>
+                <h3>VINTAGE CRIBS</h3>
+                <p>Historic joints with that old money energy. Architecturally significant spaces that flex on the competition. Greystone? Brownstone? We got 'em. 💎</p>
+            </div>
+            <div class="property-card">
+                <div class="emoji">🔨</div>
+                <h3>FIXER-UPPERS</h3>
+                <p>See the VISION where others see problems. Add value properties that turn into goldmines. We know the hidden gems that'll make you RICH. 📈</p>
+            </div>
+            <div class="property-card">
+                <div class="emoji">🏗️</div>
+                <h3>NEW CONSTRUCTION</h3>
+                <p>Brand new, never lived in, fresh out the box. Modern builds with all the latest drip. Move-in ready for the boss lifestyle. ✨</p>
+            </div>
+            <div class="property-card">
+                <div class="emoji">🏢</div>
+                <h3>MULTI-FAMILY</h3>
+                <p>Stack that passive income, fam. 2-flats, 3-flats, apartment buildings. Let tenants pay YOUR mortgage while you secure the bag. 💵</p>
+            </div>
+            <div class="property-card">
+                <div class="emoji">💼</div>
+                <h3>COMMERCIAL</h3>
+                <p>Business properties for the entrepreneurs. Retail, office, mixed-use - we move it ALL. Empire building starts HERE. 🏛️</p>
+            </div>
+            <div class="property-card">
+                <div class="emoji">🏡</div>
+                <h3>RESIDENTIAL</h3>
+                <p>From starter homes to MANSIONS. Single family joints in every hood across Chicago. Your dream crib is out there - we'll find it. 🔑</p>
+            </div>
+        </div>
+
+        <div class="feature-section">
+            <h2>WHY WE HIT DIFFERENT 💯</h2>
+            <ul class="feature-list">
+                <li>🔥 20+ years deep in Chicago streets</li>
+                <li>💎 Top 1% production - we don't play</li>
+                <li>🏆 2024 Top 10 Team - CAR recognized</li>
+                <li>🏗️ Developer knowledge - we BUILD too</li>
+                <li>🤝 Network deeper than Lake Michigan</li>
+                <li>📊 Market intel others don't have</li>
+                <li>⚡ We move FAST when opportunity calls</li>
+                <li>💪 Full squad support on every deal</li>
+            </ul>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-logo">COHEN MORSCH THUG LIFE EDITION</div>
+        <p class="copyright">© 2026 | GET THAT PROPERTY 🙏💎</p>
+    </footer>
+</body>
+</html>

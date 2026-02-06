@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE CREW | Cohen Morsch THUG LIFE 🔥</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Permanent+Marker&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Bebas Neue', sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: #ffd700;
+            min-height: 100vh;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffd700' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(0,0,0,0.9);
+            border-bottom: 3px solid #ffd700;
+        }
+
+        .logo {
+            font-family: 'Permanent Marker', cursive;
+            font-size: 2rem;
+            color: #ffd700;
+            text-decoration: none;
+        }
+
+        .nav-links { display: flex; gap: 30px; }
+        .nav-links a {
+            color: #ffd700;
+            text-decoration: none;
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: all 0.3s;
+        }
+        .nav-links a:hover { color: #fff; text-shadow: 0 0 20px #ffd700; }
+        .nav-links a.active { color: #fff; border-bottom: 2px solid #ffd700; }
+
+        .page-header {
+            padding: 150px 50px 80px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .page-header h1 {
+            font-family: 'Permanent Marker', cursive;
+            font-size: 5rem;
+            color: #ffd700;
+            text-shadow: 5px 5px 0 #000;
+            margin-bottom: 20px;
+        }
+
+        .page-header p {
+            font-size: 1.5rem;
+            color: #fff;
+            letter-spacing: 5px;
+        }
+
+        .crew-intro {
+            max-width: 900px;
+            margin: 0 auto 60px;
+            padding: 0 50px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .crew-intro p {
+            font-size: 1.3rem;
+            color: #fff;
+            line-height: 1.8;
+            letter-spacing: 1px;
+        }
+
+        .crew-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 50px 100px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .crew-card {
+            background: linear-gradient(145deg, rgba(26,26,46,0.9), rgba(15,52,96,0.9));
+            border: 4px solid #ffd700;
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s;
+            position: relative;
+        }
+
+        .crew-card:hover {
+            transform: translateY(-15px) rotate(-1deg);
+            box-shadow: 0 30px 60px rgba(255,215,0,0.3);
+        }
+
+        .crew-card.boss {
+            grid-column: span 1;
+            border-width: 6px;
+            background: linear-gradient(145deg, rgba(50,30,0,0.9), rgba(80,50,0,0.9));
+        }
+
+        .crew-card img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            filter: contrast(1.1) saturate(1.1);
+            border-bottom: 4px solid #ffd700;
+        }
+
+        .crew-card.boss img {
+            height: 400px;
+        }
+
+        .crew-info {
+            padding: 30px;
+        }
+
+        .crew-name {
+            font-family: 'Permanent Marker', cursive;
+            font-size: 2rem;
+            color: #ffd700;
+            margin-bottom: 10px;
+        }
+
+        .crew-title {
+            font-size: 1.2rem;
+            color: #fff;
+            letter-spacing: 3px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .crew-bio {
+            font-size: 1.1rem;
+            color: #ccc;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+
+        .crew-contact {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .crew-contact a {
+            color: #ffd700;
+            text-decoration: none;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+
+        .crew-contact a:hover {
+            color: #fff;
+        }
+
+        .badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #ffd700;
+            color: #000;
+            padding: 10px 20px;
+            font-family: 'Permanent Marker', cursive;
+            font-size: 1rem;
+            transform: rotate(10deg);
+            border: 3px solid #000;
+        }
+
+        footer {
+            background: #000;
+            padding: 50px;
+            text-align: center;
+            border-top: 5px solid #ffd700;
+        }
+
+        .footer-logo {
+            font-family: 'Permanent Marker', cursive;
+            font-size: 1.5rem;
+            color: #ffd700;
+            margin-bottom: 20px;
+        }
+
+        .copyright {
+            color: #666;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+        }
+
+        @media (max-width: 768px) {
+            .page-header h1 { font-size: 3rem; }
+            nav { padding: 15px 20px; flex-direction: column; gap: 15px; }
+            .nav-links { gap: 15px; flex-wrap: wrap; justify-content: center; }
+            .crew-grid { grid-template-columns: 1fr; padding: 0 20px 50px; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="logo">COHEN MORSCH 🔫</a>
+        <div class="nav-links">
+            <a href="what-we-sling.html">WHAT WE SLING</a>
+            <a href="what-we-build.html">WHAT WE BUILD</a>
+            <a href="crew.html" class="active">THE CREW</a>
+            <a href="pull-up.html">PULL UP</a>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <h1>THE CREW 👥</h1>
+        <p>MEET THE SQUAD RUNNIN' THE STREETS OF CHICAGO REAL ESTATE</p>
+    </section>
+
+    <div class="crew-intro">
+        <p>COHEN MORSCH ain't just a team - we're a FAMILY. 20+ years deep in the Chi-Town real estate game. Top 1% producers. $57.3M closed last year. Top 10 team by Chicago Association of Realtors in 2024. We don't play games - we CLOSE deals. 💰🏆</p>
+    </div>
+
+    <div class="crew-grid">
+        <!-- Charlie Cohen - The OG -->
+        <div class="crew-card boss">
+            <div class="badge">THE OG 👑</div>
+            <img src="https://cdn.prod.website-files.com/6759d339bb8514d8504f4f83/6983d829d2513f8d4849d15e_compass-150.jpg" alt="Charlie Cohen">
+            <div class="crew-info">
+                <h3 class="crew-name">CHARLIE COHEN</h3>
+                <div class="crew-title">🔥 CO-FOUNDER & HEAD HONCHO</div>
+                <p class="crew-bio">The GODFATHER of Chicago real estate. Charlie been running these streets since before most agents knew what a mortgage was. With a vision sharper than a switchblade and negotiation skills that make grown men cry, he built this empire from the ground up. When Charlie walks into a room, deals close themselves. NO CAP. 💯</p>
+                <div class="crew-contact">
+                    <a href="mailto:charlie.cohen@compass.com">📧 charlie.cohen@compass.com</a>
+                    <a href="tel:+18472877791">📱 847-287-7791</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Alex Morsch - The Enforcer -->
+        <div class="crew-card boss">
+            <div class="badge">THE BOSS 💼</div>
+            <img src="https://cdn.prod.website-files.com/6759d339bb8514d8504f4f83/6983d7d40273fd7e88ec333e_compass-131.jpg" alt="Alex Morsch">
+            <div class="crew-info">
+                <h3 class="crew-name">ALEX MORSCH</h3>
+                <div class="crew-title">🔥 CO-FOUNDER & CLOSER-IN-CHIEF</div>
+                <p class="crew-bio">They call him THE ARCHITECT. Alex don't just sell properties - he BUILDS empires. 40+ design/build projects as principal. He sees potential where others see problems, and turns fixer-uppers into MANSIONS. If you want someone who gets their hands dirty and still shows up in a suit, Alex is your guy. RESPECT. 🙏</p>
+                <div class="crew-contact">
+                    <a href="mailto:alex.morsch@compass.com">📧 alex.morsch@compass.com</a>
+                    <a href="tel:+13127203404">📱 312-720-3404</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Noah Rauschenberger -->
+        <div class="crew-card">
+            <div class="badge">SOLDIER 💪</div>
+            <img src="https://cdn.prod.website-files.com/6759d339bb8514d8504f4f83/6983d56dc6578d21ab60bb87_compass-049.jpg" alt="Noah Rauschenberger">
+            <div class="crew-info">
+                <h3 class="crew-name">NOAH RAUSCHENBERGER</h3>
+                <div class="crew-title">⚡ THE GRINDER</div>
+                <p class="crew-bio">Noah stays GRINDING 25/8. First one in, last one out. He's got that hungry energy that turns "maybes" into "SOLD" signs. Young gun with old school hustle. Clients love him because he treats every deal like it's a million dollars - because to him, YOUR dream home IS worth a million. 💎</p>
+                <div class="crew-contact">
+                    <a href="mailto:noah.rauschenberger@compass.com">📧 noah.rauschenberger@compass.com</a>
+                    <a href="tel:+13125133877">📱 312-513-3877</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Joy Curtin -->
+        <div class="crew-card">
+            <div class="badge">QUEEN 👸</div>
+            <img src="https://cdn.prod.website-files.com/6759d339bb8514d8504f4f83/6983d97c4a0f62ecfc2d2435_compass-033.jpeg" alt="Joy Curtin">
+            <div class="crew-info">
+                <h3 class="crew-name">JOY CURTIN</h3>
+                <div class="crew-title">✨ THE CONNECTOR</div>
+                <p class="crew-bio">Joy brings the VIBES and the DEALS. She's got a network deeper than the Chicago River and a smile that makes sellers drop their asking price. Don't let the name fool you - she's ALL business when it comes to getting her clients the bag. Joy finds homes that spark JOY. Period. 🏠💕</p>
+                <div class="crew-contact">
+                    <a href="mailto:joy.curtin@compass.com">📧 joy.curtin@compass.com</a>
+                    <a href="tel:+17733508862">📱 773-350-8862</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Selima Dee -->
+        <div class="crew-card">
+            <div class="badge">RIDER 🛡️</div>
+            <img src="https://cdn.prod.website-files.com/6759d339bb8514d8504f4f83/6983d8ce61b5d41484006c33_IMG_8155.png" alt="Selima Dee">
+            <div class="crew-info">
+                <h3 class="crew-name">SELIMA DEE</h3>
+                <div class="crew-title">🎯 THE STRATEGIST</div>
+                <p class="crew-bio">Selima plays chess while everyone else plays checkers. She's three moves ahead on every deal, seeing angles nobody else sees. Got that quiet confidence that WINS. When the market gets tough, Selima gets tougher. She don't just find houses - she finds OPPORTUNITIES. Strategic queen energy. 👑</p>
+                <div class="crew-contact">
+                    <a href="mailto:selima.dee@compass.com">📧 selima.dee@compass.com</a>
+                    <a href="tel:+14349968453">📱 434-996-8453</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-logo">COHEN MORSCH THUG LIFE EDITION</div>
+        <p class="copyright">© 2026 | SQUAD GOALS ONLY 🙏💎</p>
+    </footer>
+</body>
+</html>

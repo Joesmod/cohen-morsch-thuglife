@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PULL UP | Cohen Morsch THUG LIFE 🔥</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Permanent+Marker&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Bebas Neue', sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: #ffd700;
+            min-height: 100vh;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffd700' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(0,0,0,0.9);
+            border-bottom: 3px solid #ffd700;
+        }
+
+        .logo {
+            font-family: 'Permanent Marker', cursive;
+            font-size: 2rem;
+            color: #ffd700;
+            text-decoration: none;
+        }
+
+        .nav-links { display: flex; gap: 30px; }
+        .nav-links a {
+            color: #ffd700;
+            text-decoration: none;
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: all 0.3s;
+        }
+        .nav-links a:hover { color: #fff; text-shadow: 0 0 20px #ffd700; }
+        .nav-links a.active { color: #fff; border-bottom: 2px solid #ffd700; }
+
+        .page-header {
+            padding: 150px 50px 80px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .page-header h1 {
+            font-family: 'Permanent Marker', cursive;
+            font-size: 5rem;
+            color: #ffd700;
+            text-shadow: 5px 5px 0 #000;
+            margin-bottom: 20px;
+        }
+
+        .page-header p {
+            font-size: 1.5rem;
+            color: #fff;
+            letter-spacing: 5px;
+        }
+
+        .contact-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 50px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-info {
+            background: rgba(0,0,0,0.5);
+            padding: 50px;
+            border-radius: 20px;
+            border: 4px solid #ffd700;
+        }
+
+        .contact-info h2 {
+            font-family: 'Permanent Marker', cursive;
+            font-size: 2.5rem;
+            color: #ffd700;
+            margin-bottom: 30px;
+        }
+
+        .contact-info p {
+            font-size: 1.2rem;
+            color: #fff;
+            line-height: 1.8;
+            margin-bottom: 40px;
+            letter-spacing: 1px;
+        }
+
+        .contact-methods {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .contact-method {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 20px;
+            background: rgba(255,215,0,0.1);
+            border-radius: 10px;
+            border-left: 4px solid #ffd700;
+            transition: all 0.3s;
+        }
+
+        .contact-method:hover {
+            transform: translateX(10px);
+            background: rgba(255,215,0,0.2);
+        }
+
+        .contact-method .emoji {
+            font-size: 2rem;
+        }
+
+        .contact-method .details h4 {
+            font-family: 'Permanent Marker', cursive;
+            font-size: 1.2rem;
+            color: #ffd700;
+        }
+
+        .contact-method .details a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+        }
+
+        .contact-method .details a:hover {
+            color: #ffd700;
+        }
+
+        .cta-section {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-family: 'Permanent Marker', cursive;
+            font-size: 3rem;
+            color: #ffd700;
+            margin-bottom: 30px;
+        }
+
+        .cta-section p {
+            font-size: 1.3rem;
+            color: #fff;
+            margin-bottom: 40px;
+            line-height: 1.8;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            padding: 25px 60px;
+            background: #ffd700;
+            color: #000;
+            font-family: 'Permanent Marker', cursive;
+            font-size: 1.8rem;
+            text-decoration: none;
+            border: 5px solid #000;
+            transition: all 0.3s;
+            box-shadow: 8px 8px 0 #000;
+            margin-bottom: 30px;
+        }
+
+        .cta-btn:hover {
+            transform: translate(-5px, -5px);
+            box-shadow: 13px 13px 0 #000;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            font-size: 2.5rem;
+            transition: transform 0.3s;
+        }
+
+        .social-links a:hover {
+            transform: scale(1.3);
+        }
+
+        .testimonials {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 80px 50px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonials h2 {
+            font-family: 'Permanent Marker', cursive;
+            font-size: 3rem;
+            color: #ffd700;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background: rgba(0,0,0,0.5);
+            padding: 30px;
+            border-radius: 15px;
+            border: 3px solid #ffd700;
+        }
+
+        .testimonial-card .quote {
+            font-size: 1.1rem;
+            color: #fff;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .testimonial-card .author {
+            font-family: 'Permanent Marker', cursive;
+            color: #ffd700;
+            font-size: 1rem;
+        }
+
+        footer {
+            background: #000;
+            padding: 50px;
+            text-align: center;
+            border-top: 5px solid #ffd700;
+        }
+
+        .footer-logo {
+            font-family: 'Permanent Marker', cursive;
+            font-size: 1.5rem;
+            color: #ffd700;
+            margin-bottom: 20px;
+        }
+
+        .copyright {
+            color: #666;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+        }
+
+        @media (max-width: 900px) {
+            .contact-section { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .page-header h1 { font-size: 3rem; }
+            nav { padding: 15px 20px; flex-direction: column; gap: 15px; }
+            .nav-links { gap: 15px; flex-wrap: wrap; justify-content: center; }
+            .contact-section { padding: 20px; }
+            .cta-section h2 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="logo">COHEN MORSCH 🔫</a>
+        <div class="nav-links">
+            <a href="what-we-sling.html">WHAT WE SLING</a>
+            <a href="what-we-build.html">WHAT WE BUILD</a>
+            <a href="crew.html">THE CREW</a>
+            <a href="pull-up.html" class="active">PULL UP</a>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <h1>PULL UP 🤝</h1>
+        <p>SLIDE INTO OUR DMS. LET'S BUILD TOGETHER.</p>
+    </section>
+
+    <div class="contact-section">
+        <div class="contact-info">
+            <h2>HIT US UP 📱</h2>
+            <p>Ready to cop that dream crib? Looking to flip a property? Got a building project in mind? We're here to make it happen, fam. No question too big, no deal too small. Let's talk money. 💰</p>
+            
+            <div class="contact-methods">
+                <div class="contact-method">
+                    <div class="emoji">📧</div>
+                    <div class="details">
+                        <h4>EMAIL THE BOSSES</h4>
+                        <a href="mailto:charlie.cohen@compass.com">charlie.cohen@compass.com</a>
+                    </div>
+                </div>
+                <div class="contact-method">
+                    <div class="emoji">📱</div>
+                    <div class="details">
+                        <h4>CALL CHARLIE</h4>
+                        <a href="tel:+18472877791">847-287-7791</a>
+                    </div>
+                </div>
+                <div class="contact-method">
+                    <div class="emoji">📱</div>
+                    <div class="details">
+                        <h4>CALL ALEX</h4>
+                        <a href="tel:+13127203404">312-720-3404</a>
+                    </div>
+                </div>
+                <div class="contact-method">
+                    <div class="emoji">📍</div>
+                    <div class="details">
+                        <h4>THE OFFICE</h4>
+                        <a href="#">Chicago, IL - Where legends are made</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <h2>READY TO SECURE THE BAG? 💰</h2>
+            <p>Whether you're buying, selling, building, or investing - we got you. The squad is ready to put in WORK and get you that W. Don't sleep on this opportunity, fam.</p>
+            <a href="https://www.cohenmorsch.com/work-with-us" class="cta-btn">LET'S GET THIS BREAD 🍞</a>
+            
+            <div class="social-links">
+                <a href="https://www.instagram.com/p/DS3gaeYj3wN/" target="_blank">📸</a>
+                <a href="https://charliecohen.substack.com/" target="_blank">📝</a>
+            </div>
+        </div>
+    </div>
+
+    <section class="testimonials">
+        <h2>WHAT THE STREETS SAY 🗣️</h2>
+        <div class="testimonial-grid">
+            <div class="testimonial-card">
+                <p class="quote">"Charlie and Alex turned my garbage property into a GOLDMINE. These guys see what others can't. Real ones. 💯"</p>
+                <p class="author">— SATISFIED CLIENT, LINCOLN PARK</p>
+            </div>
+            <div class="testimonial-card">
+                <p class="quote">"First time buyer and they made it SMOOTH. No cap, thought it'd be stressful but they handled everything. Legends."</p>
+                <p class="author">— HAPPY HOMEOWNER, WICKER PARK</p>
+            </div>
+            <div class="testimonial-card">
+                <p class="quote">"Sold my building for 40% over asking. The marketing, the staging, the negotiations - all HIT. Cohen Morsch different."</p>
+                <p class="author">— PROPERTY INVESTOR, LOGAN SQUARE</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-logo">COHEN MORSCH THUG LIFE EDITION</div>
+        <p class="copyright">© 2026 | PULL UP AND GET PAID 🙏💎</p>
+    </footer>
+</body>
+</html>
